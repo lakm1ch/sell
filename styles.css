@@ -16,17 +16,22 @@
     }
 }
 
-h2 {
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2, h3 {
     animation: fadeIn 1.5s ease-out;
 }
 
-h1, h2 {
-    background: linear-gradient(to right, #3498db, #2ecc71);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-
+/* General Styles */
 html {
     scroll-behavior: smooth;
 }
@@ -35,67 +40,51 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: white;
+    background: #f0f4f8;
 }
 
+/* Logo */
 .logo {
     display: flex;
-    align-items: center; /* Выравнивание текста и иконки по вертикали */
-    padding: 10px;
+    align-items: center;
+    padding: 20px;
     font-family: 'Arial', sans-serif;
-    font-size: 1.5rem;
-    color: #2196f3; /* Голубой цвет логотипа */
-    text-transform: uppercase; /* Заглавные буквы */
+    font-size: 2rem;
+    color: #2196f3;
+    text-transform: uppercase;
     font-weight: bold;
-    letter-spacing: 1.2px;
-    position: relative; /* Для добавления линии */
+    letter-spacing: 1.5px;
 }
 
 .logo-icon {
-    width: 250px; /* Размер иконки */
+    width: 200px;
     height: auto;
-    margin-right: 20px; /* Отступ между иконкой и текстом */
+    margin-right: 20px;
 }
 
 .logo-text {
-    color: #333; /* Цвет текста */
     transition: color 0.3s ease;
-    position: relative;
-}
-
-.logo::before {
-    content: ""; /* Линия между иконкой и текстом */
-    position: absolute;
-    left: 250px; /* Позиция линии после иконки */
-    top: 50%; /* Центрирование линии по высоте логотипа */
-    width: 2px; /* Ширина линии */
-    height: 50%; /* Длина линии относительно высоты текста */
-    background: #ccc; /* Цвет линии */
-    transform: translateY(-50%);
 }
 
 .logo:hover .logo-text {
-    color: #21cbf3; /* Изменение цвета текста при наведении */
+    color: #21cbf3;
 }
-
-.logo:hover .logo-icon {
-    transform: scale(1.05); /* Увеличение иконки при наведении */
-    transition: transform 0.7s ease;
-}
-
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(90deg, rgba(0, 30, 60, 0.8), rgba(0, 60, 100, 0.8)), url('foto/background2.jpg');
-    color: #e0f7fa; /* Светло-голубой */
+    background: linear-gradient(135deg, rgba(0, 50, 100, 0.7), rgba(0, 30, 60, 0.7)), url('foto/background2.jpg');
     background-size: cover;
     background-position: center;
+    color: #e0f7fa;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: left;
-    padding: 20px;
+    padding: 40px;
+    text-align: center;
+    position: relative;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
 }
 
 .content-container {
@@ -106,42 +95,49 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     height: 80%;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 1)
+    position: relative;
 }
 
 .left-box {
     flex: 1;
     margin-right: 20px;
+    text-align: left;
 }
 
 .left-box h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
     margin-bottom: 20px;
+    font-weight: bold;
+    animation: fadeInUp 1s ease;
 }
 
 .left-box p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: 20px;
+    font-weight: 300;
+    animation: fadeInUp 1.5s ease;
 }
 
 .cta-info {
     margin-top: 20px;
+    animation: fadeInUp 2s ease;
 }
 
 .cta-info p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin-bottom: 10px;
 }
 
 .btn {
     background: linear-gradient(45deg, #FF6F61, #FFA177);
     color: white;
-    border: none;
-    padding: 10px 20px;
+    padding: 12px 25px;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .btn:hover {
@@ -163,8 +159,6 @@ body {
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
-    cursor: alias;
     transition: transform 1s ease;
 }
 
@@ -186,8 +180,7 @@ body {
     align-items: center;
     width: 90%;
     max-width: 1200px;
-    margin: 40px auto 0;
-    padding: 20px;
+    margin: 40px auto;
     flex-wrap: wrap;
 }
 
@@ -200,13 +193,8 @@ body {
 .stat-item h2 {
     font-size: 3rem;
     font-weight: bold;
-    color: #4caf50; /* Зеленый для акцента */
+    color: #4caf50;
     margin-bottom: 10px;
-    transition: color 1s ease;
-}
-
-.stat-item h2:hover {
-    color: #64dd17; /* Ярко-зеленый */
 }
 
 .stat-item p {
@@ -218,66 +206,42 @@ body {
 .marketing-container {
     display: flex;
     justify-content: space-between;
+    gap: 20px;
     width: 90%;
     max-width: 1200px;
-    margin: 40px auto 0;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-
-.marketing-item {
-    background: linear-gradient(145deg, rgba(0, 50, 100, 0.4), rgba(0, 70, 130, 0.6)), url('foto/business.jpg');
-    background-size: cover;    
-    padding: 30px;
-    text-align: center;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); 
-    flex: 1;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
-    position: relative;
-}
-
-/* .marketing-container .marketing-item:nth-child(1),
-.marketing-container .marketing-item:nth-child(2),
-.marketing-container .marketing-item:nth-child(3) {
-    background: 
-        linear-gradient(145deg, rgba(0, 50, 100, 0.4), rgba(0, 70, 130, 0.6)), 
-        url('foto/business.jpg') left top no-repeat,
-        url('foto/design.jpg') center top no-repeat,
-        url('foto/photo1.jpg') right top no-repeat;
-    background-size: 33.33% 100%; 
-    background-position: left top, center top, right top; 
-    background-repeat: no-repeat;
-    padding: 30px;
-    text-align: center;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); 
-    flex: 1;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
-    position: relative;
-} */
-
-.marketing-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px; /* Расстояние между карточками */
+    margin: 40px auto;
 }
 
 .marketing-item {
-    display: flex;
-    flex-direction: column; /* Чтобы элементы внутри карточки располагались вертикально */
-    justify-content: space-between;
-    height: 300px; /* Примерная высота карточки, можно подкорректировать */
+    background: linear-gradient(145deg, rgba(0, 50, 100, 0.6), rgba(0, 70, 130, 0.8)), url('foto/business.jpg');
+    background-size: cover;
+    padding: 40px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    flex: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    color: white;
 }
-
-
 
 .marketing-item:hover {
-    transform: scale(1.08); /* Больше увеличение при наведении */
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); /* Более интенсивная тень */
+    transform: scale(1.08);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.marketing-item h3 {
+    font-size: 1.75rem;
+    margin-bottom: 15px;
+    color: #64b5f6;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.marketing-item p {
+    font-size: 1rem;
+    color: #bbdefb;
+    line-height: 1.6;
 }
 
 .marketing-item::after {
@@ -287,39 +251,13 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.1); /* Эффект легкого свечения */
+    background: rgba(255, 255, 255, 0.1);
     opacity: 0;
     transition: opacity 0.3s ease;
-    z-index: 0;
 }
 
 .marketing-item:hover::after {
     opacity: 1;
-}
-
-.marketing-item h3 {
-    font-size: 1.75rem; /* Увеличен размер шрифта */
-    margin-bottom: 15px;
-    color: #64b5f6; /* Нежно-голубой */
-    font-weight: bold;
-    z-index: 1;
-    position: relative;
-    text-transform: uppercase; /* Современный стиль */
-    letter-spacing: 1.5px;
-}
-
-.marketing-item p {
-    font-size: 1rem;
-    color: #bbdefb; /* Светлый голубой */
-    z-index: 1;
-    position: relative;
-    line-height: 1.6;
-    font-family: 'Arial', sans-serif; /* Современный шрифт */
-}
-
-/* Добавить анимацию при загрузке */
-.marketing-item {
-    animation: fadeInUp 0.5s ease both;
 }
 
 @keyframes fadeInUp {
